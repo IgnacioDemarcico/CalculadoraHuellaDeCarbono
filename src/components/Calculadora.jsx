@@ -14,18 +14,18 @@ function Calculadora() {
     const [Calefaccion,setCalefaccion]=useState('')
 
     const handleCalculate = () => {
-      const factorDeEmisionElectrica = 2.2;
-      const factorDeEmisionDeAuto = 23;
-      const factorDeEmisionAguaCaliente= 6;
-      const factorDeEmisionCalefaccion=3.15;
+      const factorDeEmisionElectrica = 0.48;
+      const factorDeEmisionDeAuto = 0.143;
+      const factorDeEmisionAguaCaliente= 0.03;
+      const factorDeEmisionCalefaccion=0.12;
 
       const emisionElectrica = usoElectrico * factorDeEmisionElectrica;
       const emisionDeAuto = kilometrajeAuto * factorDeEmisionDeAuto;
       const emisionAgua=AguaCaliente*factorDeEmisionAguaCaliente;
       const emisionCalefaccion= Calefaccion* factorDeEmisionCalefaccion;
   
-      const resultadoHuellaDeCarbono = emisionElectrica + emisionDeAuto + emisionAgua + emisionCalefaccion;
-  
+      var resultadoHuellaDeCarbono = emisionElectrica + emisionDeAuto + emisionAgua + emisionCalefaccion;
+      resultadoHuellaDeCarbono=resultadoHuellaDeCarbono.toFixed(2)
       setHuellaDeCarbono(resultadoHuellaDeCarbono);
     };
   
@@ -43,7 +43,7 @@ function Calculadora() {
           onChange={(e) => setKilometrajeAuto(e.target.value)}
         />
         <InputForm 
-        label="Cuanto tiempo te bañas :"
+        label="Cuanto tiempo te bañas(min) :"
         value={AguaCaliente}
         onChange={(e)=>setUsoAguaCaliente(e.target.value)}
         />
@@ -71,6 +71,11 @@ function Calculadora() {
       </div>
     );
   }
-  
+  //fuente: https://energiaonline.com.ar/como-calcular-la-huella-de-carbono-que-le-dejas-al-planeta/
+  //https://www.caranddriver.com/es/coches/planeta-motor/a30780438/emisiones-contaminantes-segun-tipo-coche/
+  //https://www.edesur.com.ar/novedades/calefactor-electrico-mas-eficiente-por-consumo/#:~:text=Un%20panel%20est%C3%A1ndar%20consume%20600,aire%20acondicionado%20en%20modo%20calor.
+  //https://www.bbva.es/general/sostenibilidad/soluciones-para-personas/huella-de-carbono-personas/repositorio/ducharse-a-diario.html#:~:text=Una%20ducha%20de%20aproximadamente%205,se%20utiliza%20una%20caldera%20el%C3%A9ctrica.
+
+
   export default Calculadora;
   
