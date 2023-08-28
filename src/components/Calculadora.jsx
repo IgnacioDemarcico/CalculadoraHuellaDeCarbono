@@ -3,7 +3,7 @@ import { useState} from "react";
 import Boton from "./Boton";
 import Resultado from "./Resultado";
 import InputForm from "./InputForm";
-import  "./Calculadora.css";
+import  "./calculadora.css";
 
 function Calculadora() {
     const [usoElectrico, setUsoElectrico] = useState('');
@@ -48,7 +48,9 @@ function Calculadora() {
             <option value="vegan">Vegano</option>
           </select>
         </div>
-        <Boton onClick={handleCalculate} class="bton" />
+        <div className="bton">
+        <Boton onClick={handleCalculate} className="bton" />
+        </div>
         {huellaDeCarbono && <Resultado carbonFootprint={huellaDeCarbono} />}
       </div>
     );
