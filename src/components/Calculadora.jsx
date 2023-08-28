@@ -1,3 +1,9 @@
+import React from "react";
+import { useState} from "react";
+import Boton from "./Boton";
+import Resultado from "./Resultado";
+import InputForm from "./InputForm";
+
 function Calculadora() {
     const [usoElectrico, setUsoElectrico] = useState('');
     const [kilometrajeAuto, setKilometrajeAuto] = useState('');
