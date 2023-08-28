@@ -1,6 +1,40 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.css'; // Asegúrate de tener los estilos de Bootstrap cargados
 
+// Componente para el formulario de entrada
+function InputForm(props) {
+  return (
+    <div className="form-group">
+      <label>{props.label}</label>
+      <input
+        type="number"
+        value={props.value}
+        onChange={props.onChange}
+        className="form-control"
+      />
+    </div>
+  );
+}
+
+// Componente para el botón de calcular
+function CalculateButton(props) {
+  return (
+    <button onClick={props.onClick} className="btn btn-primary">
+      Calcular
+    </button>
+  );
+}
+
+// Componente para el resultado
+function Result(props) {
+  return (
+    <div className="alert alert-success">
+      Tu huella de carbono es: {props.carbonFootprint} kg CO2
+    </div>
+  );
+}
+
+// Componente principal que renderiza la calculadora
 function CarbonFootprintCalculator() {
   const [electricityUsage, setElectricityUsage] = useState('');
   const [carMileage, setCarMileage] = useState('');
@@ -23,26 +57,20 @@ function CarbonFootprintCalculator() {
   };
 
   return (
-    <div className="centered-container">
+    <div className="container">
       <h1>Calculadora de Huella de Carbono</h1>
-      <div className="form-group">
-        <label>Consumo de Electricidad (kWh):</label>
-        <input
-          type="number"
-          value={electricityUsage}
-          onChange={(e) => setElectricityUsage(e.target.value)}
-          className="form-control"
-        />
-      </div>
-      <div className="form-group">
-        <label>Kilometraje del Auto (km):</label>
-        <input
-          type="number"
-          value={carMileage}
-          onChange={(e) => setCarMileage(e.target.value)}
-          className="form-control"
-        />
-      </div>
+      {/* Usar el componente InputForm para cada entrada */}
+      <InputForm
+        label="Consumo de Electricidad (kWh):"
+        value={electricityUsage}
+        onChange={(e) => setElectricityUsage(e.target.value)}
+      />
+      <InputForm
+        label="Kilometraje del Auto (km):"
+        value={carMileage}
+        onChange={(e) => setCarMileage(e.target.value)}
+      />
+      {/* Usar el componente nativo select para la elección de dieta */}
       <div className="form-group">
         <label>Elección de Dieta:</label>
         <select
@@ -55,15 +83,10 @@ function CarbonFootprintCalculator() {
           <option value="vegan">Vegano</option>
         </select>
       </div>
-      <button onClick={handleCalculate} className="btn btn-primary">
-        Calcular
-      </button>
-      {carbonFootprint !== null && (
-        <div className="result">
-          <h2>Tu Huella de Carbono:</h2>
-          <p>{carbonFootprint.toFixed(2)} kg CO2</p>
-        </div>
-      )}
+      {/* Usar el componente CalculateButton para el botón */}
+      <CalculateButton onClick={handleCalculate} />
+      {/* Mostrar el componente Result solo si hay un valor calculado */}
+      {carbonFootprint && <Result carbonFootprint={carbonFootprint} />}
     </div>
   );
 }
