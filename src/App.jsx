@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css'; // Asegúrate de tener los estilos de Bootstrap cargados
+import './App.css';
 
 function CarbonFootprintCalculator() {
   const [electricityUsage, setElectricityUsage] = useState('');
@@ -23,7 +23,7 @@ function CarbonFootprintCalculator() {
   };
 
   return (
-    <div className="container">
+    <div className="centered-container">
       <h1>Calculadora de Huella de Carbono</h1>
       <div className="form-group">
         <label>Consumo de Electricidad (kWh):</label>
