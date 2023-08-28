@@ -9,15 +9,21 @@ function Calculadora() {
     const [kilometrajeAuto, setKilometrajeAuto] = useState('');
     const [alimentacion, setAlimentacion] = useState('omnivoro');
     const [huellaDeCarbono, setHuellaDeCarbono] = useState(null);
-  
+    const [AguaCaliente,setUsoAguaCaliente]=useState('')
+    const [Calefaccion,setCalefaccion]=useState('')
+
     const handleCalculate = () => {
-      const factorDeEmisionElectrica = 0.5;
-      const factorDeEmisionDeAuto = 2.0; 
-  
+      const factorDeEmisionElectrica = 2.2;
+      const factorDeEmisionDeAuto = 23;
+      const factorDeEmisionAguaCaliente= 6;
+      const factorDeEmisionCalefaccion=3.15;
+
       const emisionElectrica = usoElectrico * factorDeEmisionElectrica;
       const emisionDeAuto = kilometrajeAuto * factorDeEmisionDeAuto;
+      const emisionAgua=AguaCaliente*factorDeEmisionAguaCaliente;
+      const emisionCalefaccion= Calefaccion* factorDeEmisionCalefaccion;
   
-      const resultadoHuellaDeCarbono = emisionElectrica + emisionDeAuto;
+      const resultadoHuellaDeCarbono = emisionElectrica + emisionDeAuto + emisionAgua + emisionCalefaccion;
   
       setHuellaDeCarbono(resultadoHuellaDeCarbono);
     };
@@ -34,6 +40,16 @@ function Calculadora() {
           label="Kilometraje del Auto (km):"
           value={kilometrajeAuto}
           onChange={(e) => setKilometrajeAuto(e.target.value)}
+        />
+        <InputForm 
+        label="Cuanto tiempo te bañas :"
+        value={AguaCaliente}
+        onChange={(e)=>setUsoAguaCaliente(e.target.value)}
+        />
+        <InputForm 
+        label="Cuanto tiempo tenes la calefaccion prendida (hs) :"
+        value={Calefaccion}
+        onChange={(e)=>setCalefaccion(e.target.value)}
         />
         <div className="form-group">
           <label>Elección de Dieta:</label>
