@@ -12,19 +12,34 @@ function Calculadora() {
     const [huellaDeCarbono, setHuellaDeCarbono] = useState(null);
     const [AguaCaliente,setUsoAguaCaliente]=useState('')
     const [Calefaccion,setCalefaccion]=useState('')
+    
 
     const handleCalculate = () => {
       const factorDeEmisionElectrica = 0.48;
       const factorDeEmisionDeAuto = 0.143;
       const factorDeEmisionAguaCaliente= 0.03;
       const factorDeEmisionCalefaccion=0.12;
+      const fatorDeEmisionOmnivoro=2.5;
+      const fatorDeEmisionVegetariana=1.8;
+      const fatorDeEmisionVegana=1.5;
 
+      
       const emisionElectrica = usoElectrico * factorDeEmisionElectrica;
       const emisionDeAuto = kilometrajeAuto * factorDeEmisionDeAuto;
       const emisionAgua=AguaCaliente*factorDeEmisionAguaCaliente;
       const emisionCalefaccion= Calefaccion* factorDeEmisionCalefaccion;
-  
-      var resultadoHuellaDeCarbono = emisionElectrica + emisionDeAuto + emisionAgua + emisionCalefaccion;
+      
+      if (alimentacion=="omnivoro") {
+        
+        var resultadoHuellaDeCarbono = emisionElectrica + emisionDeAuto + emisionAgua + emisionCalefaccion+fatorDeEmisionOmnivoro;
+      }
+      else if(alimentacion=="vegetarian"){
+        var resultadoHuellaDeCarbono = emisionElectrica + emisionDeAuto + emisionAgua + emisionCalefaccion+fatorDeEmisionVegetariana;
+
+      }
+      else{
+        var resultadoHuellaDeCarbono = emisionElectrica + emisionDeAuto + emisionAgua + emisionCalefaccion+fatorDeEmisionVegana;
+      }
       resultadoHuellaDeCarbono=resultadoHuellaDeCarbono.toFixed(2)
       setHuellaDeCarbono(resultadoHuellaDeCarbono);
     };
@@ -67,7 +82,7 @@ function Calculadora() {
         <div className="bton">
         <Boton onClick={handleCalculate} className="bton" />
         </div>
-        {huellaDeCarbono && <Resultado carbonFootprint={huellaDeCarbono} />}
+        {huellaDeCarbono && <Resultado carbonFootprint={huellaDeCarbono} />} 
       </div>
     );
   }
@@ -75,6 +90,8 @@ function Calculadora() {
   //https://www.caranddriver.com/es/coches/planeta-motor/a30780438/emisiones-contaminantes-segun-tipo-coche/
   //https://www.edesur.com.ar/novedades/calefactor-electrico-mas-eficiente-por-consumo/#:~:text=Un%20panel%20est%C3%A1ndar%20consume%20600,aire%20acondicionado%20en%20modo%20calor.
   //https://www.bbva.es/general/sostenibilidad/soluciones-para-personas/huella-de-carbono-personas/repositorio/ducharse-a-diario.html#:~:text=Una%20ducha%20de%20aproximadamente%205,se%20utiliza%20una%20caldera%20el%C3%A9ctrica.
+  //https://www.iberdrola.com/sostenibilidad/huella-de-carbono#:~:text=C%C3%93MO%20REDUCIR%20LA%20HUELLA%20DE%20CARBONO&text=Apuesta%20por%20un%20consumo%20responsable,respetuosos%20con%20el%20medio%20ambiente.
+  
 
 
   export default Calculadora;
