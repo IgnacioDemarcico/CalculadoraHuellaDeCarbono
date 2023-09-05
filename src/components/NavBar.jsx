@@ -1,4 +1,5 @@
 import React from "react";
+import  "./NavBar.css";
 import Nav from 'react-bootstrap/Nav';
 import { Outlet } from 'react-router-dom';
 function NavBar() {
@@ -8,15 +9,10 @@ function NavBar() {
       activeKey="/home"
     >
       <Nav.Item>
-        <Nav.Link href="/">Calculadora</Nav.Link>
+        <Nav.Link className="item" href="/">Calculadora</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/otrolado">Consejos para reducirla</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="disabled" disabled>
-          Disabled
-        </Nav.Link>
+        <Nav.Link  className="item" href="/Consejos">Consejos para reducirla</Nav.Link>
       </Nav.Item>
     </Nav>
     <Outlet/>

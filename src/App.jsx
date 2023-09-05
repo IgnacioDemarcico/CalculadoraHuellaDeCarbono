@@ -11,11 +11,7 @@ function App() {
       <Routes>
         <Route path='/' element={<NavBar />}>
           <Route index element={<Calculadora />}></Route>
-          <Route path='/otrolado' element={<ConsejosHuellaCarbono/>}></Route>
-          {/*<Route path='/informacion' element={<Calculadora/>} ></Route>
-          <Route path='/personas/:id' element={<Persona />}></Route>
-  <Route path='/contacto' element={<Contacto />} ></Route>*/}
-          <Route path='*' element={<h1>Not Found</h1>} ></Route>
+          <Route path='/Consejos' element={<ConsejosHuellaCarbono/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
