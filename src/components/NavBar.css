@@ -1,11 +1,20 @@
 .navbar{
-    /*background-color: #333; /* Cambia el color de fondo según tus preferencias */
-    color: #fff; /* Cambia el color del texto según tus preferencias */
+    background-color: #333; /* Cambia el color de fondo según tus preferencias */
+   
     padding: 5px; /* Espaciado interno */
     position: fixed; /* Fijar la barra de navegación */
     top: 0; /* Asegurar que esté en la parte superior */
     z-index: 1000; /* Ajustar el índice Z si es necesario */
+    width: fill;
+  
 }
 .item{
   margin-right: 10px; /* Espacio a la derecha de cada enlace */
+  text-decoration: none;
+  color: #fff; /* Cambia el color del texto según tus preferencias */
+}
+.item2{
+  padding-right: 100rem;
+  text-decoration: none;
+  color: #fff; /* Cambia el color del texto según tus preferencias */
 }

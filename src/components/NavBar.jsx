@@ -5,14 +5,12 @@ import { Outlet } from 'react-router-dom';
 function NavBar() {
   return (
     <React.Fragment>
-    <Nav className="navbar"
-      activeKey="/home"
-    >
+    <Nav className="navbar" activeKey="/home">
       <Nav.Item>
         <Nav.Link className="item" href="/">Calculadora</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link  className="item" href="/Consejos">Consejos para reducirla</Nav.Link>
+        <Nav.Link  className="item2" href="/Consejos">Consejos para reducirla</Nav.Link>
       </Nav.Item>
     </Nav>
     <Outlet/>

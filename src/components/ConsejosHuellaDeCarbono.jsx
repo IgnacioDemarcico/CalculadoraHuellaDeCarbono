@@ -1,4 +1,5 @@
 import React from 'react';
+import Boton from './Boton';
 import  './ConsejosHuellaDeCarbono.css'
 
 
@@ -25,6 +26,7 @@ function ConsejosHuellaCarbono() {
         <li>Compra de Segunda Mano: Opta por productos de segunda mano en lugar de nuevos siempre que sea posible.</li>
         <li>Apaga las Luces: Apaga las luces cuando no las necesites y utiliza iluminación LED de bajo consumo.</li>
       </ul>
+      <Boton/>
     </div>
   );
 }
